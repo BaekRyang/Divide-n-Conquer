@@ -8,7 +8,7 @@ namespace Divide_n_Conquer
 {
     public class RandomDataMaker
     {
-        private const  int    MAX_NUM_SIZE = 100;
+        private const  int    MAX_NUM_SIZE = 100000;
         private static Random _random;
 
         public static IEnumerable<T> MakeData<T>(int _size, bool _allowDuplicates = false)
@@ -36,13 +36,11 @@ namespace Divide_n_Conquer
             
             if (_allowDuplicates)
             {
-                Console.WriteLine("중복 허용");
                 for (int i = 0; i < _size; i++) 
                     yield return (T) Convert.ChangeType(_random.Next(1, MAX_NUM_SIZE), typeof(T));
             }
             else
             {
-                Console.WriteLine("중복 불가");
                 for (int i = 0; i < _size; i++)
                 {
                     int _randomData = _data.ElementAt(_random.Next(0, _data.Count));
