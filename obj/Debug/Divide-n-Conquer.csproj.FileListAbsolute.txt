@@ -1,0 +1,7 @@
+C:\Github\Divide-n-Conquer\bin\Debug\Divide_n_Conquer.exe
+C:\Github\Divide-n-Conquer\bin\Debug\Divide_n_Conquer.pdb
+C:\Github\Divide-n-Conquer\obj\Debug\Divide-n-Conquer.csproj.AssemblyReference.cache
+C:\Github\Divide-n-Conquer\obj\Debug\Divide-n-Conquer.csproj.SuggestedBindingRedirects.cache
+C:\Github\Divide-n-Conquer\obj\Debug\Divide-n-Conquer.csproj.CoreCompileInputs.cache
+C:\Github\Divide-n-Conquer\obj\Debug\Divide_n_Conquer.exe
+C:\Github\Divide-n-Conquer\obj\Debug\Divide_n_Conquer.pdb
