@@ -30,6 +30,8 @@ namespace Divide_n_Conquer
         {
             if (_size <= 0 || _size > MAX_NUM_SIZE) throw new ArgumentOutOfRangeException(nameof(_size));
             _random = new Random();
+            
+            //랜덤 시드 지정
 
             //임시 데이터 생성
             ICollection<int> _data = Enumerable.Range(1, MAX_NUM_SIZE).ToList();

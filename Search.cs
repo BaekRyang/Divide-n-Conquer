@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Divide_n_Conquer
 {
@@ -34,11 +35,16 @@ namespace Divide_n_Conquer
                 _firstIndex = 0;           //첫 인덱스
                 _lastIndex  = _length - 1; //마지막 인덱스
 
-                // Console.Write(_sortedData[_firstIndex]);
-                // for (int i = _firstIndex+1; i < _lastIndex; i++)
+                // Console.Write(_data[_firstIndex]);
+                // for (int i = _firstIndex + 1; i < _lastIndex; i++)
                 // {
-                //     Console.Write(", " + _sortedData[i]);
+                //     Console.Write(", ");
+                //     if (i == _midIndex)
+                //         Console.ForegroundColor = ConsoleColor.Red;
+                //     Console.Write(_data[i]);
+                //     Console.ResetColor();
                 // }
+                //
                 // Console.WriteLine("");
 
                 if (_midValue == _targetData)    //값을 찾았으면
@@ -47,8 +53,14 @@ namespace Divide_n_Conquer
                     _lastIndex = _midIndex - 1;  //마지막 인덱스를 중간 인덱스 - 1로 설정
                 else                             //중간 값이 찾는 값보다 작으면 => 찾는 값은 중간 값보다 왼쪽에 있다.
                     _firstIndex = _midIndex + 1; //첫 인덱스를 중간 인덱스 + 1로 설정
-                if (_length <= 1)                //길이가 1보다 작거나 같으면 없는것임
-                    return (false, _loopCount);  //false 반환
+
+                if (_length <= 1)                       //길이가 1보다 작거나 같으면
+                    return (false, _loopCount);         //false 반환
+                
+                if (_data[_firstIndex] > _targetData || //첫 인덱스의 값이 찾는 값보다 크면
+                    _data[_lastIndex]  < _targetData)   //마지막 인덱스의 값이 찾는 값보다 작으면
+                    // 첫번째와 마지막 인덱스를 비교하는 과정을 추가하면 loopCount는 줄어들지만 성능에는 크게 관여하지 않음
+                    return (false, _loopCount);         //false 반환
             }
         }
     }
