@@ -13,13 +13,20 @@ namespace Divide_n_Conquer
 
             // IEnumerable<int> _sortedRandomIntData = _randomIntData.OrderBy(_d => _d);
             // BinarySearchCompare(_sortedRandomIntData.ToList());
-
+            
             Stopwatch _stopwatch = new Stopwatch();
             _stopwatch.Start();
             var _mergeSorted = _randomIntData.ToList().MergeSort();
             _stopwatch.Stop();
             Console.WriteLine("Merge Sort: " + _stopwatch.Elapsed);
             _mergeSorted.Print();
+            
+            _stopwatch = new Stopwatch();
+            _stopwatch.Start();
+            var _quickSorted = _randomIntData.ToList().QuickSort();
+            _stopwatch.Stop();
+            Console.WriteLine("Quick Sort: " + _stopwatch.Elapsed);
+            _quickSorted.Print();
         }
 
         private static void Search(List<int> _randomIntData)
