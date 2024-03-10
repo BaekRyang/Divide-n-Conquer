@@ -5,6 +5,21 @@ namespace Divide_n_Conquer
 {
     public static class Sort
     {
+        public static List<T> BubbleSort<T>(this List<T> _data) where T : IComparable<T>
+        {
+            for (int i = 0; i < _data.Count - 1; i++)
+            {
+                for (int j = i + 1; j < _data.Count; j++)
+                {
+                    if (_data[i].CompareTo(_data[j]) <= 0) continue; //i번째 데이터가 j번째 데이터보다 크면 바꾼다.
+                    _data.Print(i, j);
+                    _data.Swap(i, j);
+                }
+            }
+
+            return _data;
+        }
+
         public static List<T> MergeSort<T>(this List<T> _data) where T : IComparable<T> //T는 비교가 가능해야 정렬이 가능
         {
             if (_data.Count <= 1)
@@ -65,10 +80,10 @@ namespace Divide_n_Conquer
                     _left.Add(_data[i]);
             }
 
-            var _sortedData = new List<T>();
-            var    _leftSorted  = QuickSort(_left);
-            var    _rightSorted = QuickSort(_right);
-            
+            var _sortedData  = new List<T>();
+            var _leftSorted  = QuickSort(_left);
+            var _rightSorted = QuickSort(_right);
+
             //정렬된 데이터를 순서대로 병합
             _sortedData.AddRange(_leftSorted);
             _sortedData.Add(_pivot);

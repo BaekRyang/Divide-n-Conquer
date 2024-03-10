@@ -27,6 +27,15 @@ namespace Divide_n_Conquer
             _stopwatch.Stop();
             Console.WriteLine("Quick Sort: " + _stopwatch.Elapsed);
             _quickSorted.Print();
+            
+            _stopwatch = new Stopwatch();
+            _stopwatch.Start();
+            var _bubbleSorted = _randomIntData.ToList().BubbleSort();
+            _stopwatch.Stop();
+            Console.WriteLine("Bubble Sort: " + _stopwatch.Elapsed);
+            _bubbleSorted.Print();
+            
+            
         }
 
         private static void Search(List<int> _randomIntData)
