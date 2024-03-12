@@ -48,6 +48,26 @@ namespace Divide_n_Conquer
             }
 
             Console.WriteLine();
+        } 
+        public static void Print(this IList _data, int _target) //변경사항 표시용 프린트
+        {
+            for (int _index = 0; _index < _data.Count; _index++)
+            {
+                int _maxDigitCount = RandomDataMaker.MAX_NUM_SIZE.GetDigitCount() - 1;
+                    
+                if (_index == _target)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write($"{_index}. {_data[_target].ToString().PadRight(_maxDigitCount)} <-\n");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.Write($"{_index}. {_data[_index].ToString().PadRight(_maxDigitCount)}\n");
+                }
+            }
+
+            Console.WriteLine();
         }
 
         public static void Swap<T>(this IList<T> _target, int _idx1, int _idx2)

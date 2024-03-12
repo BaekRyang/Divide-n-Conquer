@@ -46,6 +46,12 @@ namespace Divide_n_Conquer
             Console.WriteLine("Selection Sort: " + _stopwatch.Elapsed);
             _selectionSorted.Print();
             
+            _stopwatch = new Stopwatch();
+            _stopwatch.Start();
+            var _insertionSorted = _randomIntData.InsertionSort();
+            _stopwatch.Stop();
+            Console.WriteLine("Insertion Sort: " + _stopwatch.Elapsed);
+            _insertionSorted.Print();
             
         }
 

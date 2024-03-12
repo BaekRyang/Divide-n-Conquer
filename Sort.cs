@@ -8,33 +8,53 @@ namespace Divide_n_Conquer
     {
         public static List<T> BubbleSort<T>(this List<T> _data) where T : IComparable<T>
         {
-            for (int i = 0; i < _data.Count - 1; i++)
+            var _dataCopy = new List<T>(_data);
+            for (int i = 0; i < _dataCopy.Count - 1; i++)
             {
-                for (int j = i + 1; j < _data.Count; j++)
+                for (int j = i + 1; j < _dataCopy.Count; j++)
                 {
-                    if (_data[i].CompareTo(_data[j]) <= 0) continue; //i번째 데이터가 j번째 데이터보다 크면 바꾼다.
-                    // _data.Print(i, j);
-                    _data.Swap(i, j);
+                    if (_dataCopy[i].CompareTo(_dataCopy[j]) <= 0) continue; //i번째 데이터가 j번째 데이터보다 크면 바꾼다.
+
+                    _data.Print(i, j);
+                    _dataCopy.Swap(i, j);
                 }
             }
 
-            return _data;
+            return _dataCopy;
         }
 
         public static IEnumerable<T> SelectionSort<T>(this IList<T> _data) where T : IComparable<T>
         {
-            while (_data.Count > 0)
+            var _dataCopy = new List<T>(_data);
+            while (_dataCopy.Count > 0)
             {
                 int _minimumDataIndex = 0;
-                for (int i = 1; i < _data.Count; i++)
+                for (int i = 1; i < _dataCopy.Count; i++)
                 {
-                    if (_data[i].CompareTo(_data[_minimumDataIndex]) < 0)
+                    if (_dataCopy[i].CompareTo(_dataCopy[_minimumDataIndex]) < 0)
                         _minimumDataIndex = i;
                 }
 
-                yield return _data[_minimumDataIndex];
-                _data.RemoveAt(_minimumDataIndex);
+                yield return _dataCopy[_minimumDataIndex];
+                _dataCopy.RemoveAt(_minimumDataIndex);
             }
+        }
+
+        public static List<T> InsertionSort<T>(this List<T> _data) where T : IComparable<T>
+        {
+            //삽입 정렬의 중요한 점은 현재 검사중인 수 이전의 데이터는 정렬되어 있다는 것이다.
+
+            for (int i = 1; i < _data.Count; i++) //배열의 2번째 데이터부터 시작해서 모든 데이터를 검사
+            {
+                T   _key = _data[i];                             //현재 검사중인 데이터를 키로 설정
+                int _j   = i - 1;                                //현재 검사중인 데이터의 이전 데이터부터 시작
+                while (_j >= 0 && _data[_j].CompareTo(_key) > 0) //이전 데이터가 키보다 크면 (_j >= 0 조건은 배열의 범위를 벗어나지 않기 위함)
+                    _data[_j + 1] = _data[_j--];                 //이전 데이터를 한 칸 뒤로 이동하며 j를 하나 빼면서 전부 검사 하면서 _key가 들어갈 자리가 나올 때 까지 데이터를 뒤로 민다.
+
+                _data[_j + 1] = _key;
+            }
+
+            return _data;
         }
 
         public static List<T> MergeSort<T>(this List<T> _data) where T : IComparable<T> //T는 비교가 가능해야 정렬이 가능
