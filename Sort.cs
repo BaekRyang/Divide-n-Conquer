@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Divide_n_Conquer
 {
@@ -12,12 +13,28 @@ namespace Divide_n_Conquer
                 for (int j = i + 1; j < _data.Count; j++)
                 {
                     if (_data[i].CompareTo(_data[j]) <= 0) continue; //i번째 데이터가 j번째 데이터보다 크면 바꾼다.
-                    _data.Print(i, j);
+                    // _data.Print(i, j);
                     _data.Swap(i, j);
                 }
             }
 
             return _data;
+        }
+
+        public static IEnumerable<T> SelectionSort<T>(this IList<T> _data) where T : IComparable<T>
+        {
+            while (_data.Count > 0)
+            {
+                int _minimumDataIndex = 0;
+                for (int i = 1; i < _data.Count; i++)
+                {
+                    if (_data[i].CompareTo(_data[_minimumDataIndex]) < 0)
+                        _minimumDataIndex = i;
+                }
+
+                yield return _data[_minimumDataIndex];
+                _data.RemoveAt(_minimumDataIndex);
+            }
         }
 
         public static List<T> MergeSort<T>(this List<T> _data) where T : IComparable<T> //T는 비교가 가능해야 정렬이 가능

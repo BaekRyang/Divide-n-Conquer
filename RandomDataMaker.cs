@@ -8,7 +8,7 @@ namespace Divide_n_Conquer
 {
     public class RandomDataMaker
     {
-        public const   int    MAX_NUM_SIZE = 100000;
+        public const   int    MAX_NUM_SIZE = 10000000;
         private static Random _random;
 
         public static IEnumerable<T> MakeData<T>(int _size, bool _allowDuplicates = false)

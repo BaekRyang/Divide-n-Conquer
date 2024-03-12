@@ -9,31 +9,42 @@ namespace Divide_n_Conquer
     {
         public static void Main(string[] args)
         {
-            IEnumerable<int> _randomIntData = RandomDataMaker.MakeData<int>(9, false);
+            //IEnumerable은 지연 평가를 지원하므로 데이터가 필요한 시점에만 평가한다.
+            //따라서 ToList를 미리 하지 않으면 데이터가 필요한 시점에 계속해서 랜덤 데이터를 생성하게 된다.
+            var _randomIntData = RandomDataMaker.MakeData<int>(9, false).ToList();
+            
+            _randomIntData.Print();
 
             // IEnumerable<int> _sortedRandomIntData = _randomIntData.OrderBy(_d => _d);
             // BinarySearchCompare(_sortedRandomIntData.ToList());
             
             Stopwatch _stopwatch = new Stopwatch();
             _stopwatch.Start();
-            var _mergeSorted = _randomIntData.ToList().MergeSort();
+            var _mergeSorted = _randomIntData.MergeSort();
             _stopwatch.Stop();
             Console.WriteLine("Merge Sort: " + _stopwatch.Elapsed);
             _mergeSorted.Print();
             
             _stopwatch = new Stopwatch();
             _stopwatch.Start();
-            var _quickSorted = _randomIntData.ToList().QuickSort();
+            var _quickSorted = _randomIntData.QuickSort();
             _stopwatch.Stop();
             Console.WriteLine("Quick Sort: " + _stopwatch.Elapsed);
             _quickSorted.Print();
             
             _stopwatch = new Stopwatch();
             _stopwatch.Start();
-            var _bubbleSorted = _randomIntData.ToList().BubbleSort();
+            var _bubbleSorted = _randomIntData.BubbleSort();
             _stopwatch.Stop();
             Console.WriteLine("Bubble Sort: " + _stopwatch.Elapsed);
             _bubbleSorted.Print();
+            
+            _stopwatch = new Stopwatch();
+            _stopwatch.Start();
+            var _selectionSorted = _randomIntData.SelectionSort();
+            _stopwatch.Stop();
+            Console.WriteLine("Selection Sort: " + _stopwatch.Elapsed);
+            _selectionSorted.Print();
             
             
         }
